@@ -22,11 +22,11 @@ BPB_NumberOfHiddenSectors:      dd 0
 BPB_Large_Sector_Count:         dd 0
 
 EBPB_DriveNumber:               db 0
-EBPB_Flags:                     db 0
+                                db 0
 EBPB_Signature:                 db 0x28
-EBPB_VolumeID:                  dd 0
-EBPB_VolumeLabelString:         dq 0
-EBPB_SystemIdentifier:          dq 0
+EBPB_VolumeID:                  db 0x12, 0x34, 0x56, 0x78
+EBPB_VolumeLabelString:         db 'LEEJIEUN OS'
+EBPB_SystemIdentifier:          db 'FAT12   '
 EBPB_BootCode:                  db 0x13
 
 start:
@@ -35,6 +35,7 @@ start:
 puts:
     push si
     push ax
+    push bx
 
 .loop:
     lodsb
