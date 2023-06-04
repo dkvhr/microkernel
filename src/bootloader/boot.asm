@@ -81,21 +81,21 @@ main:
 floppy_error:
         mov si, msg_fail
         call puts
-    jmp wait_key_and_reboot
+        jmp wait_key_and_reboot
 
 wait_key_and_reboot:
-    mov ah, 0
-    int 0x16
-    jmp 0x0FFFF:0
+        mov ah, 0
+        int 0x16
+        jmp 0x0FFFF:0
 
 .halt:
-    cli
+        cli
         jmp .halt
 
 
 logic_block_address_to_cylinder_head_sector_address:
-    push ax
-    push dx
+        push ax
+        push dx
         xor dx, dx
         div word [BPB_SectorsPerTrack] ; ax=LBA/SectorsPerTrack
                                     ; dx=LBA%SectorsPerTrack
